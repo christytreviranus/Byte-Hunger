@@ -1,8 +1,6 @@
 body {
     background-color:darkslategray;
-    height: 100vh;
 }
-
 
 .card {
     background-color: cadetblue;
@@ -68,6 +66,9 @@ padding: 0px;
 #bs-example-navbar-collapse-2{
     padding-top: 10px;
     padding-bottom: 10px;
+
+ 
+   
 }
 
 .dropdown-toggle{
