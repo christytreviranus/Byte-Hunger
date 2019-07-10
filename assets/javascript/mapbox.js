@@ -9,7 +9,7 @@ if (!('remove' in Element.prototype)) {
 
   mapboxgl.accessToken = 'pk.eyJ1IjoiZGFya3Bob2VuaXgiLCJhIjoiY2p4bDB5ZXh0MDFiMjN4b2NqMzF2MWxhNyJ9.mRf6FWgxWAPogEREQRRVWg';
 
-  
+
   // This adds the map
   let map = new mapboxgl.Map({
     // container id specified in the HTML
