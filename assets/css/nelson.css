@@ -123,9 +123,10 @@ a {
      
      /* Padding and margins */
      padding: 1em;
-     margin-top: 100px;
+     margin-top: 75px;
      margin-left: auto;
      margin-right: auto;
+     margin-bottom: 100px;
      
      /* Text styles */
      color: white;
@@ -255,3 +256,12 @@ h2{
     color: white
 }
 
+footer{
+    color:white ;
+    background-color: black;
+    width: 100%;
+    height:40px ;
+    position: fixed;
+    bottom: 0;
+    
+}
