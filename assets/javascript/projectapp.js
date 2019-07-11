@@ -1,4 +1,3 @@
-
 const config = {
     apiKey: "AIzaSyCn7ygSM2eOnXBkrvrGir2tnmYYbeR7uGo",
     authDomain: "groupproject1-30974.firebaseapp.com",
@@ -62,7 +61,7 @@ function makeCorsRequest() {
     // document.getElementById("demo").innerHTML = myJSON;
     console.log(recipeUse)
     // document.getElementById('itemQuantity').value & document.getElementById('itemUnit').value & document.getElementById('foodName').value
-    let pre = document.getElementById('response');
+    //let pre = document.getElementById('response');
 
 
     var url = 'https://api.edamam.com/api/nutrition-details?app_id=' + app_id + '&app_key=' + app_key;
@@ -79,7 +78,7 @@ function makeCorsRequest() {
     //THIS IS WHERE YOUR DATA IS COMING FROM, AKA THE RESPONSE
     xhr.onload = function () {
         var text = xhr.responseText;
-        pre.innerHTML = text;
+        //pre.innerHTML = text;
         let data = JSON.parse(text);
             console.log(data.calories);
         console.log("hello")
@@ -91,7 +90,7 @@ function makeCorsRequest() {
 
 
         // Creates local "temporary" object for holding item data
-        const newItem = {
+        let newItem = {
             name: foodName,
             unit: itemUnit,
             quantity: itemQuantity,
@@ -130,7 +129,7 @@ function makeCorsRequest() {
 
     console.log('recipe:', recipe)
 
-    pre.innerHTML = 'Loading...';
+    //pre.innerHTML = 'Loading...';
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(recipe);
 
@@ -148,34 +147,33 @@ function makeCorsRequest() {
     console.log(childSnapshot.val());
 
     // Store everything into a variable.
-    const foodName1 = childSnapshot.val().name;
-    const itemUnit1 = childSnapshot.val().unit;
-    const itemQuantity1 = childSnapshot.val().quantity;
-    const itemCOGS1 = childSnapshot.val().cogs;
-    const itemCalories = childSnapshot.val().calories;
+    let foodName1 = childSnapshot.val().name;
+    let itemUnit1 = childSnapshot.val().unit;
+    let itemQuantity1 = childSnapshot.val().quantity;
+    let itemCOGS1 = childSnapshot.val().cogs;
+    let itemCalories = childSnapshot.val().calories;
 
     // Item Info
-    // console.log(foodName);
-    // console.log(itemUnit);
-    // console.log(itemQuantity);
-    // console.log(itemCOGS);
+/*     console.log(foodName);
+    console.log(itemUnit);
+    console.log(itemQuantity);
+    console.log(itemCOGS); */
 
 
     // Calculate the total tax deduction amount
-    let taxDeduction = 2 * itemCOGS1;
+    let taxDeduction = itemQuantity1 * itemCOGS1;
     console.log(taxDeduction);
 
-    
 
-text(foodName1),
-        $("<td>").text(itemUnit1),
-        $("<td>").text(itemQuantity1),
-        $("<td>").text(itemCOGS1),
-        $("<td>").text(taxDeduction),
-        $("<td>").text(itemCalories)
-    ;
+    // Create the new row
+    let newRow = $("<tr>");
+    newRow.append($("<td>" + childSnapshot.val().name + "</td>"));
+    newRow.append($("<td>" + childSnapshot.val().unit + "</td>"));
+    newRow.append($("<td class='text-center'>" + childSnapshot.val().quantity + "</td>"));
+    newRow.append($("<td class='text-center'>" + childSnapshot.val().cogs + "</td>"));
+    newRow.append($("<td class='text-center'>" + taxDeduction + "</td>"));
+    newRow.append($("<td class='text-center'>" + itemCalories + "</td>"));
 
     // Append the new row to the table
-    $("#employee-table > tbody").append(newRow);
+    $("#employee-table").append(newRow);
 });
-
