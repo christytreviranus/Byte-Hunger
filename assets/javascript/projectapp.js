@@ -166,8 +166,9 @@ $("#add-item-btn").on("click", function (event) {
 
     // Calculate the total tax deduction amount
     let taxDeduction = itemQuantity1 * itemCOGS1;
-    //console.log(taxDeduction);
 
+
+    let key = childSnapshot.key;
 
     // Create the new row
     let newRow = $("<tr>");
@@ -177,7 +178,15 @@ $("#add-item-btn").on("click", function (event) {
     newRow.append($("<td class='text-center'>" + childSnapshot.val().cogs + "</td>"));
     newRow.append($("<td class='text-center'>" + taxDeduction + "</td>"));
     newRow.append($("<td class='text-center'>" + itemCalories + "</td>"));
+    newRow.append($("<td class='text-center'><button class='remove btn btn-default btn-sm' remove='" + key + "'> - </button></td>"));
 
     // Append the new row to the table
     $("#employee-table").append(newRow);
+
+    //Remove Functionality - Removes data from Firebase and Page
+$(document).on("click", ".remove", function () {
+    removeKey = $(this).attr("remove");
+    database.ref().child(removeKey).remove();
+    window.location.reload();
+  });
 });
