@@ -44,9 +44,9 @@ function createCORSRequest(method, url) {
 
 // Make the actual CORS request.
 function makeCorsRequest() {
-    const foodName = $("#food-name-input").val().trim();
-    const itemUnit = $("#unit-input").val().trim();
-    const itemQuantity = $("#quantity-input").val().trim();
+    let foodName = $("#food-name-input").val().trim();
+    let itemUnit = $("#unit-input").val().trim();
+    let itemQuantity = $("#quantity-input").val().trim();
     const space = " "
     const ofWord = "of"
 
@@ -81,14 +81,17 @@ function makeCorsRequest() {
         //pre.innerHTML = text;
         let data = JSON.parse(text);
             console.log(data.calories);
-        console.log("hello")
+      
 
-        const foodName = $("#food-name-input").val().trim();
-        const itemUnit = $("#unit-input").val().trim();
-        const itemQuantity = $("#quantity-input").val().trim();
-        const itemCOGS = $("#cogs-input").val().trim();
+        let foodName = $("#food-name-input").val().trim();
+        let itemUnit = $("#unit-input").val().trim();
+        let itemQuantity = $("#quantity-input").val().trim();
+        let itemCOGS = $("#cogs-input").val().trim();
 
 
+
+
+        
         // Creates local "temporary" object for holding item data
         let newItem = {
             name: foodName,
@@ -114,9 +117,6 @@ function makeCorsRequest() {
         $("#unit-input").val("");
         $("#quantity-input").val("");
         $("#cogs-input").val("");
-
-
-
        
     };
 
@@ -137,6 +137,15 @@ function makeCorsRequest() {
     //     
 }
 
+//On click event for submit button
+$("#add-item-btn").on("click", function (event) {
+    event.preventDefault();
+    makeCorsRequest();
+    foodName = $("#food-name-input").val().trim();
+    itemUnit = $("#unit-input").val().trim();
+    itemQuantity = $("#quantity-input").val().trim();
+    itemCOGS = $("#cogs-input").val().trim();
+});
 
 //  
 //
@@ -153,16 +162,11 @@ function makeCorsRequest() {
     let itemCOGS1 = childSnapshot.val().cogs;
     let itemCalories = childSnapshot.val().calories;
 
-    // Item Info
-/*     console.log(foodName);
-    console.log(itemUnit);
-    console.log(itemQuantity);
-    console.log(itemCOGS); */
 
 
     // Calculate the total tax deduction amount
     let taxDeduction = itemQuantity1 * itemCOGS1;
-    console.log(taxDeduction);
+    //console.log(taxDeduction);
 
 
     // Create the new row
