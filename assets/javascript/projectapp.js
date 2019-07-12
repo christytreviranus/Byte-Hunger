@@ -165,7 +165,7 @@ $("#add-item-btn").on("click", function (event) {
 
 
     // Calculate the total tax deduction amount
-    let taxDeduction = itemQuantity1 * itemCOGS1;
+    let taxDeduction = 2 * (itemQuantity1 * itemCOGS1);
 
 
     let key = childSnapshot.key;
