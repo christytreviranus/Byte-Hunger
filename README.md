@@ -20,5 +20,11 @@ This web application is a prototype that seeks to connect restaurants with local
 - JavaScript 
 - MapboxJS
 - MapboxStyle API
-- AJAX for [populate second api here]
+- Edamam API
+- jQuery
+
+## Demo
+
+<a href="https://christytreviranus.github.io/Byte-Hunger/">View the finished product here.</a>
+
 
